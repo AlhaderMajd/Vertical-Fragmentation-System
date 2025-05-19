@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Fragmentation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vertical Fragmentation System</h1>
+        
+        <h2>Relation Information</h2>
+        <div class="card relation-info">
+            <label for="relation-name">Relation Name:</label>
+            <input id="relation-name" type="text" value="Player">
+            <label for="relation-attributes">Attributes (comma-separated):</label>
+            <input id="relation-attributes" type="text" value="Name,Height,Gender,Address,Weight,DOB,Telephone">
+            <label for="relation-pk">Primary Key:</label>
+            <input id="relation-pk" type="text" value="Name">
+        </div>
+
+        <h2>Queries</h2>
+        <div class="card queries-section">
+            <div id="queries-container"></div>
+            <button id="add-query-btn" class="btn">Add Query</button>
+        </div>
+
+        <button id="view-result-btn" class="btn" style="margin-bottom: 20px;">View Result</button>
+
+        <h2>Results</h2>
+        <div class="card results-section" id="results-section" style="display:none;">
+            <div style="margin-bottom: 18px; color: #2563eb; font-weight: 500; font-size: 1.1rem;">Below are the calculated matrices and vertical fragments based on your input.</div>
+            <div class="matrix-container">
+                <div class="matrix">
+                    <h3>Attribute Usage Matrix</h3>
+                    <div id="usage-matrix"></div>
+                </div>
+                <div class="matrix">
+                    <h3>Attribute Affinity Matrix</h3>
+                    <div id="affinity-matrix"></div>
+                </div>
+                <div class="matrix">
+                    <h3>Clustered Matrix</h3>
+                    <div id="clustered-matrix"></div>
+                </div>
+                <div class="matrix">
+                    <h3>Vertical Fragments</h3>
+                    <div id="fragments"></div>
+                </div>
+            </div>
+            <div style="margin-top:20px;">
+                <button id="reset-btn" class="btn">Reset</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f6f8fa;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 32px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #2563eb;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 1.3rem;
+    color: #222;
+    margin-bottom: 18px;
+    font-weight: 600;
+    border-bottom: 1.5px solid #e5e7eb;
+    padding-bottom: 6px;
+    margin-top: 32px;
+}
+
+h3 {
+    font-size: 1.1rem;
+    color: #2563eb;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card {
+    background: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    margin-top: 2px;
+    background: #fff;
+    transition: border 0.2s;
+}
+input[type="text"]:focus, input[type="number"]:focus {
+    border: 1.5px solid #2563eb;
+    outline: none;
+}
+
+.btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 8px;
+    transition: background 0.2s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.btn:hover, .btn:focus {
+    background: #1746a2;
+}
+
+.remove-btn {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+.remove-btn:hover, .remove-btn:focus {
+    background: #b91c1c;
+}
+
+#reset-btn {
+    background: #f59e42;
+    color: #fff;
+}
+#reset-btn:hover, #reset-btn:focus {
+    background: #b45309;
+}
+
+.queries-section, .relation-info, .results-section {
+    margin-bottom: 32px;
+}
+
+#queries-container .query-item {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    padding: 16px 18px;
+    margin-bottom: 16px;
+    border: 1.5px solid #e5e7eb;
+}
+
+.matrix-container {
+    display: block;
+    margin-top: 18px;
+}
+
+.matrix {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 18px 12px 12px 12px;
+    margin-bottom: 24px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.matrix table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1rem;
+}
+
+.matrix th, .matrix td {
+    border: 1px solid #e5e7eb;
+    padding: 12px 14px;
+    text-align: center;
+    background: #fff;
+}
+
+.matrix th {
+    background-color: #f3f6fa;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    color: #2563eb;
+}
+
+.matrix tr:nth-child(even) td {
+    background-color: #f8fafc;
+}
+
+.matrix tr:hover td {
+    background-color: #eaf3fb;
+    transition: background 0.2s;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 8px;
+    }
+    .matrix th, .matrix td {
+        padding: 8px 6px;
+        font-size: 0.95rem;
+    }
+    .card {
+        padding: 12px 6px;
+    }
+}
+
+#fragments {
+    margin-top: 10px;
+    font-size: 1.08rem;
+    color: #1746a2;
+    font-weight: 500;
+} 
