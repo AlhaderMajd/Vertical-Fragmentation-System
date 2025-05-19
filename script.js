@@ -2,7 +2,8 @@
 let relation = {
     name: 'Player',
     attributes: ['Name', 'Height', 'Gender', 'Address', 'Weight', 'DOB', 'Telephone'],
-    primaryKey: 'Name'
+    primaryKey: 'Name',
+    siteCount: 3
 };
 
 let queries = [
@@ -42,6 +43,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('relation-pk').addEventListener('input', e => {
         relation.primaryKey = e.target.value;
     });
+    document.getElementById('site-count').addEventListener('input', e => {
+        const newSiteCount = parseInt(e.target.value) || 1;
+        relation.siteCount = newSiteCount;
+        // Update all queries to match new site count
+        queries.forEach(query => {
+            if (query.sites.length < newSiteCount) {
+                // Add new sites with 0 frequency
+                while (query.sites.length < newSiteCount) {
+                    query.sites.push(0);
+                }
+            } else if (query.sites.length > newSiteCount) {
+                // Remove excess sites
+                query.sites = query.sites.slice(0, newSiteCount);
+            }
+        });
+        initializeQueries();
+        calculateMatrices();
+    });
     document.getElementById('add-query-btn').addEventListener('click', addNewQuery);
     document.getElementById('reset-btn').addEventListener('click', resetAll);
     document.getElementById('view-result-btn').addEventListener('click', () => {
@@ -77,10 +96,10 @@ function addQueryToUI(query, index) {
 
     const sitesDiv = document.createElement('div');
     sitesDiv.style.marginTop = '10px';
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < relation.siteCount; i++) {
         const siteInput = document.createElement('input');
         siteInput.type = 'number';
-        siteInput.value = query.sites[i];
+        siteInput.value = query.sites[i] || 0;
         siteInput.placeholder = `Site ${i + 1}`;
         siteInput.addEventListener('change', (e) => {
             queries[index].sites[i] = parseInt(e.target.value) || 0;
@@ -107,7 +126,7 @@ function addQueryToUI(query, index) {
 function addNewQuery() {
     queries.push({
         text: '',
-        sites: [0, 0, 0]
+        sites: Array(relation.siteCount).fill(0)
     });
     initializeQueries();
 }
@@ -116,7 +135,8 @@ function resetAll() {
     relation = {
         name: 'Player',
         attributes: ['Name', 'Height', 'Gender', 'Address', 'Weight', 'DOB', 'Telephone'],
-        primaryKey: 'Name'
+        primaryKey: 'Name',
+        siteCount: 3
     };
     queries = [
         {
@@ -139,6 +159,7 @@ function resetAll() {
     document.getElementById('relation-name').value = relation.name;
     document.getElementById('relation-attributes').value = relation.attributes.join(',');
     document.getElementById('relation-pk').value = relation.primaryKey;
+    document.getElementById('site-count').value = relation.siteCount;
     initializeQueries();
     document.getElementById('results-section').style.display = 'none';
 }
@@ -161,7 +182,7 @@ function calculateAffinityMatrix(usageMatrix) {
     queries.forEach((query, qIdx) => {
         for (let i = 0; i < n; i++) {
             for (let j = 0; j < n; j++) {
-                for (let s = 0; s < 3; s++) {
+                for (let s = 0; s < relation.siteCount; s++) {
                     affinity[i][j] += usageMatrix[qIdx][i] * usageMatrix[qIdx][j] * query.sites[s];
                 }
             }
